@@ -1,0 +1,20 @@
+.homePage {
+  background-image: url(../../assets/General/background.jpeg);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: white;
+}
+.homeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 70px;
+}
+
+@media screen and (max-width: 420px) {
+  .homeContainer {
+    padding: 30px 40px;
+  }
+}

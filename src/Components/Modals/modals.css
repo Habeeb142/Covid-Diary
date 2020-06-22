@@ -1,0 +1,27 @@
+.fade .modal .show {
+  padding-left: 0px;
+}
+.modal.show .modal-dialog {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transform: none;
+}
+.modal-content {
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.modal-header {
+  border-bottom: none;
+  padding: 0.5rem 1rem 1rem 0rem;
+}
+.modal-body {
+  padding: 0rem 1rem 1rem 0rem;
+}
+.modal-footer {
+  border-top: none;
+  padding: 0rem 1rem 1rem 0rem;
+}
