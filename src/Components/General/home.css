@@ -1,8 +1,9 @@
 .homePage {
-  background-image: url(../../assets/General/background.jpeg);
+  background: #f7f7f7;
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: "Roboto", sans-serif;
   min-height: 100vh;
   color: white;
 }

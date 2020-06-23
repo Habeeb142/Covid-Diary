@@ -23,7 +23,7 @@ const NameForm = ({
           textAlign: "left",
           padding: "25px",
           fontFamily: "'Roboto', sans-serif",
-          fontWeight: "100",
+          fontWeight: "400",
           fontSize: "1.1rem",
         }}
         className="pledgeContainer"
@@ -31,12 +31,12 @@ const NameForm = ({
       >
         {" "}
         <>
-         
           <div>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
+                color: "#000",
               }}
             >
               <div
@@ -92,6 +92,7 @@ const NameForm = ({
                   className="formControl"
                 />
               </div>
+              <br />
               <div>
                 <Upload
                   uploadMultipleFiles={uploadMultipleFiles}

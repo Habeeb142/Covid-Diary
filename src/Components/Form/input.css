@@ -8,13 +8,13 @@
   font-weight: 500;
   width: 500px;
   height: 100px;
-  color: #fff;
+  color: #000;
   font-family: "Roboto", sans-serif;
 }
 .formControlName {
   height: auto;
   width: 500px;
-  color: #fff;
+  color: #000;
   font-size: 1rem;
   background-color: transparent;
   border: 2px solid #b11917;

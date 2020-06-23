@@ -5,8 +5,8 @@ import "./nav.css";
 import { Navbar } from "react-bootstrap";
 
 //Image
-import Logo from "../.././assets/NBR Logo/nbr-white.png";
-import BudLogo from "../../assets/Bud Logo/bud-fill.png";
+import Logo from "../.././assets/General/logo2.jpg";
+// import BudLogo from "../../assets/General/logo2.jpg";
 
 const Nav = () => {
   return (
@@ -25,12 +25,15 @@ const Nav = () => {
           <img
             alt=""
             src={Logo}
-            height="90"
+            height="50"
+            style={{
+              width: "130px",
+            }}
             className="d-inline-block align-top logo"
           />{" "}
           <img
             alt=""
-            src={BudLogo}
+            src=""
             height="50"
             className="d-inline-block align-top budlogo"
           />{" "}

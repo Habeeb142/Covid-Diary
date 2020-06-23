@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./home.css";
-import Bottle from "../.././assets/NBR Logo/bottle.png";
 
 //Bootstrap
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 //Components
 import Nav from "../Layout/Nav";
@@ -19,6 +18,7 @@ const Home = () => {
     fact: "",
   });
   const [image, setImage] = useState([]);
+  const [imageObj, setImageObj] = useState([]);
   const [errorExists, setErrorExists] = useState(false);
 
   const { name, text, fact } = diary;
@@ -31,11 +31,13 @@ const Home = () => {
 
   const uploadMultipleFiles = (e) => {
     fileObj.push(e.target.files);
+    console.log(fileObj);
     for (let i = 0; i < fileObj[0].length; i++) {
-      image.push(URL.createObjectURL(fileObj[0][i]));
+      fileArray.push(URL.createObjectURL(fileObj[0][i]));
     }
+    setImage([...fileArray]);
+    setImageObj(Array.from(e.target.files));
     console.log(image);
-    setImage(image);
   };
 
   const uploadFiles = (e) => {
@@ -50,28 +52,30 @@ const Home = () => {
       console.log("error");
     } else {
       setErrorExists(false);
+
       let formData = new FormData();
       formData.append("name", name);
       formData.append("text", text);
       formData.append("fact", fact);
-      formData.append("image", image);
+      imageObj.forEach((file, i) => {
+        formData.append(`image${i + 1}`, file);
+      });
+      console.log(imageObj);
       // setCurrentPage(1);
-      console.log(formData)
-    //   fetch("https://covid-diary.herokuapp.com/", {
-    //     method: "POST",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       formData,
-    //     }),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(formData);
-    //     })
-    //     .catch((err) => console.log(err));
+
+      console.log(formData.entries());
+      fetch("https://covid-diary.herokuapp.com/uploader/", {
+        method: "POST",
+        // headers: {
+        //   'Content-Type': "multipart/form-data",
+        // },
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(formData);
+        })
+        .catch((err) => console.log(err));
     }
   };
 

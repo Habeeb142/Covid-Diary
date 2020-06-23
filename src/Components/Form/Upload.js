@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 import "../General/generate.css";
+import "./upload.css";
 
 const Upload = ({ uploadFiles, uploadMultipleFiles, image, handleSubmit }) => {
   return (
-    <div
-      className="pledgeContainer"
-      style={{
-        textAlign: "center",
-        marginTop: "50px",
-      }}
-    >
-      <h4> Upload Your Images</h4>
-      <form onSubmit={handleSubmit}>
+    <div className="pledgeContainer spaceupload">
+      <p
+        style={{
+          fontSize: "1rem",
+          fontWeight: "400",
+        }}
+      >
+        Upload Your Images:
+      </p>
+      <form>
         <div
           style={{
-            width: "350px",
+            width: "300px",
             height: "auto",
             display: "flex",
             justifyContent: "center",
             padding: "40px",
             margin: "auto",
             marginBottom: "20px",
-            border: "2px solid white",
+            border: "2px solid #b11917",
           }}
         >
           {image.map((url) => (
