@@ -15,13 +15,14 @@ const Home = () => {
   const [diary, setDiary] = useState({
     name: "",
     text: "",
+    month: "",
     fact: "",
   });
   const [image, setImage] = useState([]);
   const [imageObj, setImageObj] = useState([]);
   const [errorExists, setErrorExists] = useState(false);
 
-  const { name, text, fact } = diary;
+  const { name, text, month, fact } = diary;
 
   //user name
   const handleChange = (e) => {
@@ -47,7 +48,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === "" || text === "" || fact === "") {
+    if (name === "" || text === "" || month === "") {
       setErrorExists(true);
       console.log("error");
     } else {
@@ -56,9 +57,10 @@ const Home = () => {
       let formData = new FormData();
       formData.append("name", name);
       formData.append("text", text);
+      formData.append("month", month);
       formData.append("fact", fact);
       imageObj.forEach((file, i) => {
-        formData.append(`image${i + 1}`, file);
+        formData.append(`image`, file);
       });
       console.log(imageObj);
       // setCurrentPage(1);
@@ -66,14 +68,16 @@ const Home = () => {
       console.log(formData.entries());
       fetch("https://covid-diary.herokuapp.com/uploader/", {
         method: "POST",
-        // headers: {
-        //   'Content-Type': "multipart/form-data",
-        // },
+        headers: {
+          Accept: "application/json",
+        },
         body: formData,
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(formData);
+          setCurrentPage(1);
+          console.log(data);
+          localStorage.setItem("id", data._id);
         })
         .catch((err) => console.log(err));
     }

@@ -11,18 +11,17 @@
   font-size: 1.1rem;
 }
 #canvas {
-  background-image: url(../../assets/General/backgroundcard.jpeg);
+  background: #fefefe;
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .content {
-  top: 49px;
-  left: 60px;
+  top: 10px;
   position: absolute;
 }
 .downloadImage {
-  background-image: url(../../assets/General/background.jpeg);
+  background: #fefefe;
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;

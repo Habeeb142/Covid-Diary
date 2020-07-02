@@ -1,0 +1,12 @@
+.font {
+  font-family: "Give You Glory", cursive;
+  font-weight: 500px;
+  color: black;
+}
+.contentText {
+  font-family: "Raleway", sans-serif;
+  color: black;
+  line-height: 20px;
+  font-weight: 600px;
+  margin-bottom: 0rem;
+}

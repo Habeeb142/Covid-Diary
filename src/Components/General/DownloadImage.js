@@ -1,91 +1,169 @@
 import React from "react";
 
 import { Card } from "react-bootstrap";
+import Capture from "../../assets/General/capture.svg";
+import Diary from "../../assets/General/Diary.svg";
+import Logo from "../../assets/General/logo.svg";
+import "./download.css";
 
-const DownloadImage = ({ uploadedImageSrc, text }) => {
+const DownloadImage = ({ uploadedImageSrc, diary }) => {
   return (
     <div>
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
+          justifyContent: "space-between",
+          width: "350px",
+          padding: "0px 30px",
         }}
       >
-        <Card
+        <div
           style={{
-            width: "13rem",
-            backgroundColor: "#b11917",
-            color: "white",
-            borderRadius: "25px",
-            // paddingTop: "15px",
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
-            justifyContent: "flex-end",
           }}
         >
           <img
-            src={uploadedImageSrc}
-            variant="top"
+            src={Diary}
+            alt="/"
             style={{
-              pmarginTop: "5px",
-              borderRadius: "50%",
-              border: "2px solid black",
-              objectFit: "cover",
-              width: "60px",
-              height: "60px",
+              width: "30px",
+              marginRight: "8px",
             }}
           />
-          <Card.Body>
-            <Card.Text
-              style={{
-                fontSize: "0.4rem",
-                fontWeight: "400",
-                textAlign: "center",
-              }}
-            >
-              I{" "}
-              <span
-                style={{
-                  textTransform: "uppercase",
-                }}
-              >
-                {text}
-              </span>{" "}
-              , Endorse The Naija Bar Rescue Initiative.​ To curtail the spread
-              of COVID-19, Bars have closed their doors. Consequently, they
-              don’t have money to pay their staff and other bills. ​ Support
-              your favorite bar and their employees. ​<br />
-              <br />
-              Buy a N1500 beer voucher, Budweiser would match it and pay the bar
-              N3000 now. You can redeem your voucher when the bar opens
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <div>
-          <p
+          <img
+            src={Capture}
+            alt="/"
             style={{
-              border: "2px solid #b11917",
-              backgroundColor: "#b11917",
-              borderRadius: "25px",
-              padding: "5px",
-              textAlign: "center",
-              marginTop: "10px",
-              fontWeight: "400",
-              fontSize: "0.4rem",
+              width: "112px",
+            }}
+          />
+        </div>
+        <div>
+          {diary.image[0] ? (
+            <img
+              src={diary.image[0]}
+              alt="/"
+              style={{
+                border: "2px solid #F49C00",
+                objectFit: "cover",
+                width: "100px",
+                height: "100px",
+                borderRadius: "50%",
+              }}
+            />
+          ) : null}
+        </div>
+      </div>
+      <div
+        style={{
+          padding: "0px 30px",
+        }}
+      >
+        <p
+          style={{
+            marginBottom: "0rem",
+            fontSize: "0.8rem",
+          }}
+          className="font"
+        >
+          My name is{" "}
+          <span
+            style={{ color: "#B11F24", fontWeight: "bold", fontSize: "1rem" }}
+          >
+            {diary.name}
+          </span>
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <br />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              marginBottom: "10px",
+              justifyContent: "space-between",
             }}
           >
-            <a
-              href="http://www.naijabarrescue.com"
+            {diary.image[1] ? (
+              <img
+                src={diary.image[1]}
+                alt="/"
+                style={{
+                  objectFit: "cover",
+                  width: "100px",
+                  height: "100px",
+                }}
+              />
+            ) : null}
+            &nbsp;
+            <p
               style={{
-                color: "white",
-                textDecoration: "none",
+                fontSize: "0.8rem",
+                fontWeight: "500",
+                textAlign: "left",
+                width: "13rem",
+                padding: "10px",
+                height: "auto",
               }}
+              className="contentText"
             >
-              www.naijabarrescue.com
-            </a>
-          </p>
+              My most interesting/impactful month so far is {diary.month}{" "}
+              because {diary.text}
+            </p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
+              width: "100%",
+            }}
+          >
+            {diary.fact === "" ? null : (
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "400",
+                  textAlign: "left",
+                  padding: "10px",
+                  height: "auto",
+                }}
+                className="contentText"
+              >
+                <span
+                  style={{
+                    color: "#B11F24",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Word of wisdom / Note to self: &nbsp;
+                </span>
+                {diary.fact}
+              </p>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+          >
+            <img
+              src={Logo}
+              alt="/"
+              style={{
+                width: "80px",
+                marginTop: "10px",
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

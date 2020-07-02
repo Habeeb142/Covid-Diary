@@ -8,6 +8,7 @@ const NameForm = ({
   handleChange,
   text,
   name,
+  month,
   fact,
   errorExists,
   uploadFiles,
@@ -64,7 +65,17 @@ const NameForm = ({
                   flexDirection: "column",
                 }}
               >
-                <p>During the lockdown, I </p>
+                <p>My most interesting / impactful month so far is: </p>{" "}
+                <input
+                  type="text"
+                  id="month"
+                  value={month}
+                  placeholder=""
+                  onChange={handleChange}
+                  className="formControlName"
+                ></input>
+                <br />
+                <p>Because:</p>
                 <textarea
                   type="text"
                   id="text"
@@ -72,6 +83,7 @@ const NameForm = ({
                   placeholder=""
                   onChange={handleChange}
                   className="formControl"
+                  maxlength="100"
                 />
               </div>
               <br />
@@ -82,7 +94,18 @@ const NameForm = ({
                   flexDirection: "column",
                 }}
               >
-                <p>Fun Fact: </p>
+                <p>
+                  {" "}
+                  Word of wisdom / Note to self:{" "}
+                  <span
+                    style={{
+                      color: "#B11F24",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    (Optional)
+                  </span>{" "}
+                </p>
                 <textarea
                   type="text"
                   id="fact"
@@ -90,6 +113,7 @@ const NameForm = ({
                   placeholder=""
                   onChange={handleChange}
                   className="formControl"
+                  maxlength="70"
                 />
               </div>
               <br />
