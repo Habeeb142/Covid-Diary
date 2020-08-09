@@ -82,7 +82,7 @@ export default () => {
     const [momentPhoto, setMomentPhoto] = React.useState(null);
 
     // for when a user submits
-    const [submitted, setSubmitted] = React.useState(true);
+    const [submitted, setSubmitted] = React.useState(false);
 
     // to show progress
     const [loading, setLoading] = React.useState(false);
