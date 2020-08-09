@@ -29,6 +29,7 @@ let Theme = createMuiTheme({
         values: {
             xs: 0,
             sm: 600,
+            rightHere: 671,
             md: 960,
             lg: 1280,
             xl: 1920,

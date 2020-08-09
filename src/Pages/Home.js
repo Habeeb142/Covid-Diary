@@ -3,11 +3,12 @@ import React from 'react';
 import Nav from '../Components/Nav';
 
 import { makeStyles } from '@material-ui/core/styles';
-import FacebookIcon from '@material-ui/icons/Facebook';
+// import FacebookIcon from '@material-ui/icons/Facebook';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+// import TwitterIcon from '@material-ui/icons/Twitter';
+// import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import SaveIcon from '@material-ui/icons/Save';
+
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {
@@ -42,6 +43,40 @@ const useStyles = makeStyles(theme => ({
         color: '#000000',
         marginTop: theme.spacing(1),
     },
+    font80: {
+        fontSize: '5vw',
+        [theme.breakpoints.up('rightHere')]: {
+            fontSize: '35px',
+        },
+    },
+    font40: {
+        lineHeight: '3.5vh',
+        fontSize: '2.5vw',
+        [theme.breakpoints.up('rightHere')]: {
+            fontSize: '17.5px',
+        },
+    },
+    font38: {
+        fontSize: '2.375vw',
+        lineHeight: '3.5vh',
+        [theme.breakpoints.up('rightHere')]: {
+            fontSize: '16.625px',
+        },
+    },
+    font32: {
+        fontSize: '2vw',
+        lineHeight: '2.2vh',
+        [theme.breakpoints.up('rightHere')]: {
+            fontSize: '14px',
+        },
+    },
+    font30: {
+        fontSize: '1.875vw',
+        lineHeight: '2.5vh',
+        [theme.breakpoints.up('rightHere')]: {
+            fontSize: '13.125px',
+        },
+    }
 }))
 
 async function postData(url = '', data = {}) {
@@ -317,6 +352,16 @@ function Result(props) {
         momentPhoto,
     } = props.data;
 
+    // I'd like to keep this. Can't stress.
+    // let name = "Oladosu Ayo",
+    //     location = "England",
+    //     role = 'Software Engineer',
+    //     moment = "Man, it's some long ass lorem ipsum bullshit",
+    //     WOW = "Man, it's some long ass lorem ipsum bullshit",
+    //     caption = "And the rest was history.",
+    //     profilePhoto = null,
+    //     momentPhoto = null;
+
     const handleDownload = () => {
         htmlToImage.toJpeg(document.getElementById('GodNoGoShameUs'), { width: 1080, height: 1350 })
             .then(function (dataUrl) {
@@ -341,7 +386,7 @@ function Result(props) {
                                 </Button>
                 </a>
             </Box>
-            <Paper color="secondary">
+            <Paper color="secondary" style={{ maxWidth: '800px' }}>
                 <Box id="GodNoGoShameUs" position="relative">
                     <img id="template" src={Template} alt="template" style={{ width: "100%", height: "auto" }} />
                     <img
@@ -351,58 +396,44 @@ function Result(props) {
                         style={{
                             objectFit: 'cover',
                             borderRadius: '900px',
-                            // display: 'block',
                             width: '27.4074074%',
                             height: '22.07407407407%',
-                            // width: '300.4074074px',
-                            // height: '300.4074074px',
                             position: "absolute",
                             left: "6.66666667%",
                             top: "18.2222222%"
                         }} />
                     {/* </Box> */}
-                    <Box position="absolute" left="40.1851852%" top="20.8888889%" style={{
+                    <Box className={classes.font80} position="absolute" left="40.1851852%" top="20.8888889%" style={{
                         fontFamily: 'Give You Glory',
-                        fontSize: '5vw',
                         color: '#45130F',
                     }}>
                         {name}
                     </Box>
-                    <Box position="absolute" left="40.1851852%" top="29.1851852%" style={{
+                    <Box className={classes.font38} position="absolute" left="40.1851852%" top="29.1851852%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '400',
-                        fontSize: '2.375vw',
                         color: '#45130F',
-                        lineHeight: '3.5vw',
                     }}>
                         {role}
                     </Box>
-                    <Box position="absolute" left="40.1851852%" top="33.3333333%" style={{
+                    <Box className={classes.font40} position="absolute" left="40.1851852%" top="33.3333333%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '700',
-                        fontSize: '2.5vw',
                         color: '#B11F24',
-                        lineHeight: '3.5vw',
+                        
                     }}>
                         {location}
                     </Box>
-                    <Box position="absolute" left="5.55555556%" top="44.5925926%" style={{
+                    <Box className={classes.font38} position="absolute" left="5.55555556%" top="44.5925926%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
-                        fontSize: '2.375vw',
                         color: 'rgba(68,50,50,80)',
                         width: '88.1481481%',
                         height: '12.4444444%',
-                        lineHeight: '3.5vw',
                     }}>
                         {moment}
                     </Box>
-                    {/* <Box position="absolute" left="5.55555556%" top="61.7777778%" style={{
-                                    borderRadius: '8px',
-                                    width: '46.6666667%',
-                                    height: '27.2592593%',
-                                }}> */}
                     <img id="template"
                         src={momentPhoto}
                         alt="moment"
@@ -416,28 +447,23 @@ function Result(props) {
                             height: '27.2592593%',
                         }}
                     />
-                    {/* </Box> */}
-                    <Box position="absolute" left="5.55555556%" top="89.037037%" style={{
+                    <Box className={classes.font30} position="absolute" left="5.55555556%" top="89.037037%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
-                        fontSize: '1.875vw',
                         color: 'rgba(68,50,50,80)',
                         width: '46.6666667%',
                         height: '5.92592593%',
-                        lineHeight: '2.5vw',
                     }}>
                         {caption}
                     </Box>
-                    <Box position="absolute" left="55.9259259%" top="69.4814815%" style={{
+                    <Box className={classes.font32} position="absolute" left="55.9259259%" top="69.4814815%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
-                        fontSize: '2vw',
                         color: '#B11F24',
                         width: '37.037037%',
                         height: '14.8148148%',
-                        lineHeight: '2.5vw',
                     }}>
                         "{WOW}"
                             </Box>
@@ -445,6 +471,7 @@ function Result(props) {
             </Paper>
             <Box mt={5} textAlign="center" width={1}>
                 <div class="sharethis-inline-share-buttons"></div>
+                {/* And this too */}
                 {/* <Typography>Share</Typography>
                 <Box display="inline-block" mr={1}>
                     <IconButton>
