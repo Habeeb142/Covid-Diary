@@ -1,17 +1,35 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import "./App.css";
+import { ThemeProvider } from '@material-ui/core/styles';
 
-//Components
-import Eligible from "./Components/Modals/Eligible";
-import Home from "./Components/General/Home";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+
+import NotFound from './Pages/NotFound';
+import AgeGate from './Pages/AgeGate';
+import Home from './Pages/Home';
+
+import Theme from './Theme';
 
 function App() {
+
   return (
-    <div>
-      <Eligible />
-      <Home />
-    </div>
+    <ThemeProvider theme={Theme}>
+      <Router>
+        <Switch>
+          {
+            !(localStorage.getItem("eligible")) ?
+              <Route exact path="/" component={AgeGate}></Route>
+              :
+              <Route exact path="/" component={Home}></Route>
+          }
+          <Route component={NotFound}></Route>
+          <Home />
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
