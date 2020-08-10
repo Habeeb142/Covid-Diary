@@ -45,34 +45,39 @@ const useStyles = makeStyles(theme => ({
     },
     font80: {
         fontSize: '5vw',
+        wordWrap: 'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '35px',
         },
     },
     font40: {
-        lineHeight: '3.5vh',
+        // lineHeight: '3.5vw',
         fontSize: '2.5vw',
+        wordWrap: 'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '17.5px',
         },
     },
     font38: {
         fontSize: '2.375vw',
-        lineHeight: '3.5vh',
+        // lineHeight: '3.5px',
+        wordWrap:'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '16.625px',
         },
     },
     font32: {
         fontSize: '2vw',
-        lineHeight: '2.2vh',
+        // lineHeight: '2.2vw',
+        wordWrap: 'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '14px',
         },
     },
     font30: {
         fontSize: '1.875vw',
-        lineHeight: '2.5vh',
+        // lineHeight: '2.5vw',
+        wordWrap: 'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '13.125px',
         },
@@ -355,15 +360,15 @@ function Result(props) {
     // I'd like to keep this. Can't stress.
     // let name = "Oladosu Ayo",
     //     location = "England",
-    //     role = 'Software Engineer',
-    //     moment = "Man, it's some long ass lorem ipsum bullshit",
-    //     WOW = "Man, it's some long ass lorem ipsum bullshit",
-    //     caption = "And the rest was history.",
+    //     role = 'Software Engineereeeeer',
+    //     moment = "Man, it's some long ass lorembcdsncodscndsocndsoncodsncodscd",
+    //     WOW = "Man, it's some long ass lorem ipsubcdsncodscndsocndsoncodsncodscdsgycdiucnrfubu",
+    //     caption = "And the rest was historbcdsncodscndsocndsoncodsncodscdsgycdiucnr.",
     //     profilePhoto = null,
     //     momentPhoto = null;
 
     const handleDownload = () => {
-        htmlToImage.toJpeg(document.getElementById('GodNoGoShameUs'), { width: 1080, height: 1350 })
+        htmlToImage.toJpeg(document.getElementById('GodNoGoShameUs'))
             .then(function (dataUrl) {
                 var link = document.createElement('a');
                 link.download = `${name}.jpeg`;
@@ -386,8 +391,8 @@ function Result(props) {
                                 </Button>
                 </a>
             </Box>
-            <Paper color="secondary" style={{ maxWidth: '800px' }}>
-                <Box id="GodNoGoShameUs" position="relative">
+            <Paper id="GodNoGoShameUs" color="secondary" style={{ maxWidth: '800px' }}>
+                <Box position="relative">
                     <img id="template" src={Template} alt="template" style={{ width: "100%", height: "auto" }} />
                     <img
                         id="template"
@@ -406,13 +411,15 @@ function Result(props) {
                     <Box className={classes.font80} position="absolute" left="40.1851852%" top="20.8888889%" style={{
                         fontFamily: 'Give You Glory',
                         color: '#45130F',
+                        width: '58.3333333%',
                     }}>
-                        {name}
+                        {name.split(' ')[0]}
                     </Box>
                     <Box className={classes.font38} position="absolute" left="40.1851852%" top="29.1851852%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '400',
                         color: '#45130F',
+                        width: '58.3333333%',
                     }}>
                         {role}
                     </Box>
@@ -420,7 +427,7 @@ function Result(props) {
                         fontFamily: 'Raleway',
                         fontWeight: '700',
                         color: '#B11F24',
-                        
+                        width: '58.3333333%',
                     }}>
                         {location}
                     </Box>
