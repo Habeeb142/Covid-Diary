@@ -9,6 +9,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import SaveIcon from '@material-ui/icons/Save';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { InlineShareButtons } from 'sharethis-reactjs';
 
 import Eligible from '..//Modals/Eligible';
 
@@ -349,6 +350,7 @@ function Result(props) {
 
     const classes = useStyles();
     const [hide, setHide] = React.useState(true);
+    // const [image, setImage] = React.useState(null);
     const {
         name,
         location,
@@ -370,9 +372,16 @@ function Result(props) {
     //     profilePhoto = null,
     //     momentPhoto = null;
 
+    // console.log(image)
     const filename = name + '_My_2020_Moments.png';
     React.useEffect(() => {
-        setTimeout(() => setHide(false), 5000);
+        setTimeout(() => {
+            setHide(false);
+            // htmlToImage.toPng(document.getElementById('GodNoGoShameUs'))
+            //     .then(function (dataUrl) {
+            //         setImage(dataUrl);
+            //     });
+        }, 3000);
     }, [])
     const handleDownload = () => {
         htmlToImage.toPng(document.getElementById('GodNoGoShameUs'))
@@ -485,7 +494,36 @@ function Result(props) {
                 </Box>
             </Paper>
             <Box mt={5} textAlign="center" width={1}>
-                <div className="sharethis-inline-share-buttons"></div>
+                <InlineShareButtons
+                    config={{
+                        alignment: 'center',  // alignment of buttons (left, center, right)
+                        color: 'social',      // set the color of buttons (social, white)
+                        enabled: true,        // show/hide buttons (true, false)
+                        font_size: 16,        // font size for the buttons
+                        labels: 'cta',        // button labels (cta, counts, null)
+                        language: 'en',       // which language to use (see LANGUAGES)
+                        networks: [           // which networks to include (see SHARING NETWORKS)
+                            'whatsapp',
+                            'linkedin',
+                            'messenger',
+                            'facebook',
+                            'twitter'
+                        ],
+                        padding: 12,          // padding within buttons (INTEGER)
+                        radius: 4,            // the corner radius on each button (INTEGER)
+                        show_total: true,
+                        size: 40,             // the size of each button (INTEGER)
+
+                        // OPTIONAL PARAMETERS
+                        url: 'https://enigmatic-lake-72941.herokuapp.com/', // (defaults to current url)
+                        image: `https://https://enigmatic-lake-72941.herokuapp.com/favicon-32x32.png`,  // (defaults to og:image or twitter:image)
+                        description: `Inspire the world by sharing your most impactful moment in 2020 so far #Moments2020 #Impactful #2020Impact #2020`,       // (defaults to og:description or twitter:description)
+                        title: 'Share your most interesting & impactful moment in 2020 so far',            // (defaults to og:title or twitter:title)
+                        // message: 'custom email text',     // (only for email sharing)
+                        // subject: 'custom email subject',  // (only for email sharing)
+                        // username: 'custom twitter handle' // (only for twitter sharing)
+                    }}
+                />
                 {/* <Box display="inline-block " mr={1}>
                     <Button>
                         <div className="fb-share-button" data-href="" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
