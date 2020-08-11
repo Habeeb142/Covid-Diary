@@ -10,6 +10,8 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import SaveIcon from '@material-ui/icons/Save';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
+import Eligible from '..//Modals/Eligible';
+
 import {
     Grid,
     Container,
@@ -122,7 +124,7 @@ export default () => {
     const [momentPhoto, setMomentPhoto] = React.useState(null);
 
     // for when a user submits
-    const [submitted, setSubmitted] = React.useState(true);
+    const [submitted, setSubmitted] = React.useState(false);
 
     // to show progress
     const [loading, setLoading] = React.useState(false);
@@ -168,6 +170,7 @@ export default () => {
 
     return (
         <>
+            <Eligible />
             <Nav />
             <Container maxWidth="xl" className={classes.section}>
                 <Container maxWidth="sm">
@@ -346,26 +349,26 @@ function Result(props) {
 
     const classes = useStyles();
     const [hide, setHide] = React.useState(true);
-    // const {
-    //     name,
-    //     location,
-    //     role,
-    //     moment,
-    //     WOW,
-    //     caption,
-    //     profilePhoto,
-    //     momentPhoto,
-    // } = props.data;
+    const {
+        name,
+        location,
+        role,
+        moment,
+        WOW,
+        caption,
+        profilePhoto,
+        momentPhoto,
+    } = props.data;
 
     // I'd like to keep this. Can't stress.
-    let name = "Oladosu Ayo",
-        location = "England",
-        role = 'Software Engineereeeeer',
-        moment = "Man, it's some long as s loremb cdsn codscn dsocnds oncodsn codscd",
-        WOW = "Man, it's some long ass lorem ipsubc dsncodsc ndsoc nd so nco dsncods cdsg  sdvsdbk dfghtyj",
-        caption = "And the rest was sdsds asa ew kbdkan eidiwiew iksks iuweiwhe iksskc ifdisd.",
-        profilePhoto = null,
-        momentPhoto = null;
+    // let name = "Oladosu Ayo",
+    //     location = "England",
+    //     role = 'Software Engineereeeeer',
+    //     moment = "Man, it's some long as s loremb cdsn codscn dsocnds oncodsn codscd",
+    //     WOW = "Man, it's some long ass lorem ipsubc dsncodsc ndsoc nd so nco dsncods cdsg  sdvsdbk dfghtyj",
+    //     caption = "And the rest was sdsds asa ew kbdkan eidiwiew iksks iuweiwhe iksskc ifdisd.",
+    //     profilePhoto = null,
+    //     momentPhoto = null;
 
     const filename = name + '_My_2020_Moments.png';
     React.useEffect(() => {
@@ -500,9 +503,9 @@ function Result(props) {
                         </a>
                     </Button>
                 </Box> */}
-                
-                <Box display="inline-block " mr={1}>
-                    <Button variant="contained" onClick={handleDownload}>
+
+                <Box display="inline-block " mt={2}>
+                    <Button variant="contained" size="small" onClick={handleDownload}>
                         Download
                     </Button>
                 </Box>
