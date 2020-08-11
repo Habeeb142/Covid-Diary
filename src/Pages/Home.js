@@ -3,12 +3,11 @@ import React from 'react';
 import Nav from '../Components/Nav';
 
 import { makeStyles } from '@material-ui/core/styles';
-// import FacebookIcon from '@material-ui/icons/Facebook';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
-// import TwitterIcon from '@material-ui/icons/Twitter';
-// import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import SaveIcon from '@material-ui/icons/Save';
-
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {
@@ -23,6 +22,7 @@ import {
 } from '@material-ui/core';
 
 import htmlToImage from 'html-to-image';
+import download from 'downloadjs';
 
 import {
     Template,
@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     font38: {
         fontSize: '2.375vw',
         // lineHeight: '3.5px',
-        wordWrap:'break-word',
+        wordWrap: 'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '16.625px',
         },
@@ -122,7 +122,7 @@ export default () => {
     const [momentPhoto, setMomentPhoto] = React.useState(null);
 
     // for when a user submits
-    const [submitted, setSubmitted] = React.useState(false);
+    const [submitted, setSubmitted] = React.useState(true);
 
     // to show progress
     const [loading, setLoading] = React.useState(false);
@@ -345,35 +345,32 @@ export default () => {
 function Result(props) {
 
     const classes = useStyles();
-
-    const {
-        name,
-        location,
-        role,
-        moment,
-        WOW,
-        caption,
-        profilePhoto,
-        momentPhoto,
-    } = props.data;
+    // const {
+    //     name,
+    //     location,
+    //     role,
+    //     moment,
+    //     WOW,
+    //     caption,
+    //     profilePhoto,
+    //     momentPhoto,
+    // } = props.data;
 
     // I'd like to keep this. Can't stress.
-    // let name = "Oladosu Ayo",
-    //     location = "England",
-    //     role = 'Software Engineereeeeer',
-    //     moment = "Man, it's some long ass lorembcdsncodscndsocndsoncodsncodscd",
-    //     WOW = "Man, it's some long ass lorem ipsubcdsncodscndsocndsoncodsncodscdsgycdiucnrfubu",
-    //     caption = "And the rest was historbcdsncodscndsocndsoncodsncodscdsgycdiucnr.",
-    //     profilePhoto = null,
-    //     momentPhoto = null;
+    let name = "Oladosu Ayo",
+        location = "England",
+        role = 'Software Engineereeeeer',
+        moment = "Man, it's some long as s loremb cdsn codscn dsocnds oncodsn codscd",
+        WOW = "Man, it's some long ass lorem ipsubc dsncodsc ndsoc nd so nco dsncods cdsg  sdvsdbk dfghtyj",
+        caption = "And the rest was sdsds asa ew kbdkan eidiwiew iksks iuweiwhe iksskc ifdisd.",
+        profilePhoto = null,
+        momentPhoto = null;
 
     const handleDownload = () => {
-        htmlToImage.toJpeg(document.getElementById('GodNoGoShameUs'))
+        const filename = name + '_My_2020_Moments.png';
+        htmlToImage.toPng(document.getElementById('GodNoGoShameUs'))
             .then(function (dataUrl) {
-                var link = document.createElement('a');
-                link.download = `${name}.jpeg`;
-                link.href = dataUrl;
-                link.click();
+                download(dataUrl, filename);
             });
     }
 
@@ -391,7 +388,9 @@ function Result(props) {
                                 </Button>
                 </a>
             </Box>
-            <Paper id="GodNoGoShameUs" color="secondary" style={{ maxWidth: '800px' }}>
+            <Paper id="GodNoGoShameUs" color="secondary" style={{
+                maxWidth: '800px',
+            }}>
                 <Box position="relative">
                     <img id="template" src={Template} alt="template" style={{ width: "100%", height: "auto" }} />
                     <img
@@ -439,7 +438,7 @@ function Result(props) {
                         width: '88.1481481%',
                         height: '12.4444444%',
                     }}>
-                        {moment}
+                        My most interesting/impactful moment in 2020 so far is {moment}
                     </Box>
                     <img id="template"
                         src={momentPhoto}
@@ -461,6 +460,7 @@ function Result(props) {
                         color: 'rgba(68,50,50,80)',
                         width: '46.6666667%',
                         height: '5.92592593%',
+                        textAlign: 'center'
                     }}>
                         {caption}
                     </Box>
@@ -479,30 +479,34 @@ function Result(props) {
             <Box mt={5} textAlign="center" width={1}>
                 <div class="sharethis-inline-share-buttons"></div>
                 {/* And this too */}
-                {/* <Typography>Share</Typography>
-                <Box display="inline-block" mr={1}>
-                    <IconButton>
-                        <FacebookIcon style={{ color: '#000000' }} />
-                    </IconButton>
-                </Box>
-                <Box display="inline-block" mr={1}>
+                <Typography>Share</Typography>
+                <Box display="inline-block " mr={1}>
                     <Button>
-                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" style={{ textDecoration: 'none' }} className="twitter-share-button" data-size="large" data-hashtags="#LockDownMoments" data-show-count="false"><TwitterIcon style={{ color: '#000000' }} /></a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                        <div class="fb-share-button" data-href="" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                     </Button>
                 </Box>
-                <Box display="inline-block" mr={1}>
+                <Box display="inline-block " mr={1}>
+                    <Button variant="contained">
+                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" style={{ textDecoration: 'none' }} className="twitter-share-button" data-size="large" data-hashtags="#LockDownMoments" data-show-count="false"><TwitterIcon /> Twitter</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>                        
+                    </Button>
+                </Box>
+                <Box display="inline-block " mr={1}>
+                    <Button variant="contained">
+                        <a data-pin-tall="true" data-pin-custom="true" style={{backgroundColor: 'none'}} href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
+                            Pinterest
+                        </a>
+                    </Button>
+                </Box>
+                <Box display="inline-block " mr={1}>
+                    <Button variant="contained" onClick={handleDownload}>
+                        <SaveIcon /> Download
+                    </Button>
+                </Box>
+                {/* <Box display="inline-block" mr={1}>
                     <IconButton>
                         <WhatsAppIcon style={{ color: '#000000' }} />
                     </IconButton>
                 </Box> */}
-            </Box>
-            <Box mt={2} textAlign="center" width={1}>
-                <Typography>Download</Typography>
-                <Box display="inline-block" mr={1}>
-                    <IconButton onClick={handleDownload}>
-                        <SaveIcon style={{ color: '#000000' }} />
-                    </IconButton>
-                </Box>
             </Box>
         </Box>
     );
