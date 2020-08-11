@@ -345,6 +345,7 @@ export default () => {
 function Result(props) {
 
     const classes = useStyles();
+    const [hide, setHide] = React.useState(true);
     // const {
     //     name,
     //     location,
@@ -366,30 +367,34 @@ function Result(props) {
         profilePhoto = null,
         momentPhoto = null;
 
+    const filename = name + '_My_2020_Moments.png';
+    React.useEffect(() => {
+        setTimeout(() => setHide(false), 5000);
+    }, [])
     const handleDownload = () => {
-        const filename = name + '_My_2020_Moments.png';
         htmlToImage.toPng(document.getElementById('GodNoGoShameUs'))
             .then(function (dataUrl) {
                 download(dataUrl, filename);
             });
     }
-
     return (
         <Box mb={10}>
             <Box my={1}>
                 <a href="/">
                     <Button
+                        size="small"
                         variant="contained"
                         color="secondary"
                         className={classes.button}
                         startIcon={<ArrowBackIosIcon />}
                     >
                         Start over
-                                </Button>
+                    </Button>
                 </a>
             </Box>
             <Paper id="GodNoGoShameUs" color="secondary" style={{
                 maxWidth: '800px',
+                visibility: hide ? 'hidden' : 'visible'
             }}>
                 <Box position="relative">
                     <img id="template" src={Template} alt="template" style={{ width: "100%", height: "auto" }} />
@@ -477,36 +482,30 @@ function Result(props) {
                 </Box>
             </Paper>
             <Box mt={5} textAlign="center" width={1}>
-                <div class="sharethis-inline-share-buttons"></div>
-                {/* And this too */}
-                <Typography>Share</Typography>
-                <Box display="inline-block " mr={1}>
+                <div className="sharethis-inline-share-buttons"></div>
+                {/* <Box display="inline-block " mr={1}>
                     <Button>
-                        <div class="fb-share-button" data-href="" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                        <div className="fb-share-button" data-href="" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
                     </Button>
                 </Box>
                 <Box display="inline-block " mr={1}>
                     <Button variant="contained">
-                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" style={{ textDecoration: 'none' }} className="twitter-share-button" data-size="large" data-hashtags="#LockDownMoments" data-show-count="false"><TwitterIcon /> Twitter</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>                        
+                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" style={{ textDecoration: 'none' }} className="twitter-share-button" data-size="large" data-hashtags="#LockDownMoments" data-show-count="false"><TwitterIcon /> Twitter</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
                     </Button>
                 </Box>
                 <Box display="inline-block " mr={1}>
                     <Button variant="contained">
-                        <a data-pin-tall="true" data-pin-custom="true" style={{backgroundColor: 'none'}} href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
+                        <a data-pin-tall="true" data-pin-custom="true" style={{ backgroundColor: 'none' }} href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
                             Pinterest
                         </a>
                     </Button>
-                </Box>
+                </Box> */}
+                
                 <Box display="inline-block " mr={1}>
                     <Button variant="contained" onClick={handleDownload}>
-                        <SaveIcon /> Download
+                        Download
                     </Button>
                 </Box>
-                {/* <Box display="inline-block" mr={1}>
-                    <IconButton>
-                        <WhatsAppIcon style={{ color: '#000000' }} />
-                    </IconButton>
-                </Box> */}
             </Box>
         </Box>
     );
