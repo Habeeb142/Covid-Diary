@@ -507,7 +507,7 @@ function Result(props) {
 
                         // OPTIONAL PARAMETERS
                         url: 'https://my2020moments.herokuapp.com/', // (defaults to current url)
-                        image: `https://https://my2020moments.herokuapp.com/favicon-32x32.png`,  // (defaults to og:image or twitter:image)
+                        image: `https://my2020moments.herokuapp.com/favicon-32x32.png`,  // (defaults to og:image or twitter:image)
                         description: `Inspire the world by sharing your most impactful moment in 2020 so far #Moments2020 #Impactful #2020Impact #2020`,       // (defaults to og:description or twitter:description)
                         title: 'Share your most interesting & impactful moment in 2020 so far',            // (defaults to og:title or twitter:title)
                         // message: 'custom email text',     // (only for email sharing)
