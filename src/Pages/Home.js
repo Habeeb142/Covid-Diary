@@ -251,12 +251,12 @@ export default () => {
                                         value={moment}
                                         placeholder="Describe your most interesting moment here..."
                                         rows={3}
-                                        maxLength={120}
+                                        maxLength={150}
                                         onChange={(e) => setMoment(e.target.value)}
                                         className={classes.textField}
                                     />
                                     <Box position="absolute" bottom={5} right={10}>
-                                        <Typography variant="caption">{120 - moment.length}</Typography>
+                                        <Typography variant="caption">{150 - moment.length}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -268,12 +268,12 @@ export default () => {
                                         value={WOW}
                                         placeholder="Word of wisdom here..."
                                         rows={3}
-                                        maxLength={120}
+                                        maxLength={150}
                                         onChange={(e) => setWOW(e.target.value)}
                                         className={classes.textField}
                                     />
                                     <Box position="absolute" bottom={5} right={10}>
-                                        <Typography variant="caption">{120 - WOW.length}</Typography>
+                                        <Typography variant="caption">{150 - WOW.length}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -443,7 +443,7 @@ function Result(props) {
                         color: '#45130F',
                         width: '58.3333333%',
                     }}>
-                        {role} function
+                        {role} Function
                     </Box>
                     <Box className={classes.font40} position="absolute" style={{
                         fontFamily: 'Raleway',
