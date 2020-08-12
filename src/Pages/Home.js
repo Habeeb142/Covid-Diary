@@ -463,6 +463,7 @@ function Result(props) {
                         width: '88.14814%',
                         height: '12.4444444%',
                     }}>
+                        <span style={{fontStyle:'normal'}}>Note to Self / Words of wisdom</span> <br/>
                         "{WOW}"
                     </Box>
                     {momentPhoto &&
@@ -498,6 +499,8 @@ function Result(props) {
                     <Box className={classes.font36} position="absolute" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
+                        display: 'flex',
+                        alignItems: 'center',
                         fontWeight: '600',
                         left: momentPhoto ? '45.18518%' : '5.1851851%',
                         top: '56.4444%',
