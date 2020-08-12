@@ -3,11 +3,7 @@ import React from 'react';
 import Nav from '../Components/Nav';
 
 import { makeStyles } from '@material-ui/core/styles';
-import FacebookIcon from '@material-ui/icons/Facebook';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
-import SaveIcon from '@material-ui/icons/Save';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { InlineShareButtons } from 'sharethis-reactjs';
 
@@ -21,7 +17,6 @@ import {
     Button,
     CircularProgress,
     Paper,
-    IconButton,
 } from '@material-ui/core';
 
 import htmlToImage from 'html-to-image';
@@ -377,10 +372,6 @@ function Result(props) {
     React.useEffect(() => {
         setTimeout(() => {
             setHide(false);
-            // htmlToImage.toPng(document.getElementById('GodNoGoShameUs'))
-            //     .then(function (dataUrl) {
-            //         setImage(dataUrl);
-            //     });
         }, 3000);
     }, [])
     const handleDownload = () => {
