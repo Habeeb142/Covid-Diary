@@ -411,18 +411,18 @@ function Result(props) {
                             width: '27.4074074%',
                             height: '22.07407407407%',
                             position: "absolute",
-                            left: "6.66666667%",
+                            left: "60.462962962%",
                             top: "18.2222222%"
                         }} />
                     {/* </Box> */}
-                    <Box className={classes.font80} position="absolute" left="40.1851852%" top="20.8888889%" style={{
+                    <Box className={classes.font80} position="absolute" left="10.925925925%" top="20.8888889%" style={{
                         fontFamily: 'Give You Glory',
                         color: '#45130F',
                         width: '58.3333333%',
                     }}>
                         {name.split(' ')[0]}
                     </Box>
-                    <Box className={classes.font38} position="absolute" left="40.1851852%" top="29.1851852%" style={{
+                    <Box className={classes.font38} position="absolute" left="10.925925925%" top="29.1851852%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '400',
                         color: '#45130F',
@@ -430,7 +430,7 @@ function Result(props) {
                     }}>
                         {role}
                     </Box>
-                    <Box className={classes.font40} position="absolute" left="40.1851852%" top="33.3333333%" style={{
+                    <Box className={classes.font40} position="absolute" left="10.925925925%" top="33.3333333%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '700',
                         color: '#B11F24',
@@ -438,7 +438,7 @@ function Result(props) {
                     }}>
                         {location}
                     </Box>
-                    <Box className={classes.font38} position="absolute" left="5.55555556%" top="44.5925926%" style={{
+                    <Box className={classes.font32} position="absolute" left="5.55555556%" top="44.5925926%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
@@ -446,14 +446,14 @@ function Result(props) {
                         width: '88.1481481%',
                         height: '12.4444444%',
                     }}>
-                        My most interesting/impactful moment in 2020 so far is {moment}
+                        "{WOW}"
                     </Box>
                     <img id="template"
                         src={momentPhoto}
                         alt="moment"
                         style={{
                             left: "5.55555556%",
-                            top: "61.7777778%",
+                            top: "56.8888888888888%",
                             borderRadius: '8px',
                             position: "absolute",
                             objectFit: 'cover',
@@ -461,7 +461,7 @@ function Result(props) {
                             height: '27.2592593%',
                         }}
                     />
-                    <Box className={classes.font30} position="absolute" left="5.55555556%" top="89.037037%" style={{
+                    <Box className={classes.font30} position="absolute" left="5.55555556%" top="85.33333333333%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
@@ -472,7 +472,7 @@ function Result(props) {
                     }}>
                         {caption}
                     </Box>
-                    <Box className={classes.font32} position="absolute" left="55.9259259%" top="69.4814815%" style={{
+                    <Box className={classes.font36} position="absolute" left="55.9259259%" top="56.8888888888%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
@@ -480,7 +480,7 @@ function Result(props) {
                         width: '37.037037%',
                         height: '14.8148148%',
                     }}>
-                        "{WOW}"
+                        My most interesting / impactful moment in 2020 so far is {moment}
                             </Box>
                 </Box>
             </Paper>
