@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // import { AppContext } from '../AppContext';
 
-import { AbInBev, Logo } from '../Assets';
+import { AbInBev } from '../Assets';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,7 +39,7 @@ export default function (props) {
             <AppBar position="static" className={classes.appBar}>
                 <Toolbar style={{ backgroundColor: '#ffffff', justifyContent: 'space-between' }}>
                     <img className={classes.logo} src={AbInBev} alt="Website Logo" />
-                    <img className={classes.logo} src={Logo} alt="Website Logo" />
+                    {/* <img className={classes.logo} src={Logo} alt="Website Logo" /> */}
                 </Toolbar>
             </AppBar>
         </div>

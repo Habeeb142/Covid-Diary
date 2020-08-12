@@ -9,6 +9,7 @@ import { InlineShareButtons } from 'sharethis-reactjs';
 
 import Eligible from '..//Modals/Eligible';
 
+
 import {
     Grid,
     Container,
@@ -24,7 +25,7 @@ import download from 'downloadjs';
 
 import {
     Template,
-    My2020Moments
+    My2020Moments,
 } from '../Assets';
 
 
@@ -62,6 +63,14 @@ const useStyles = makeStyles(theme => ({
         wordWrap: 'break-word',
         [theme.breakpoints.up('rightHere')]: {
             fontSize: '16.625px',
+        },
+    },
+    font36: {
+        fontSize: '2.25vw',
+        // lineHeight: '3.5px',
+        wordWrap: 'break-word',
+        [theme.breakpoints.up('rightHere')]: {
+            fontSize: '16.088px',
         },
     },
     font32: {
@@ -128,7 +137,7 @@ export default () => {
     const [error, setError] = React.useState(false);
 
     // super simple validation -- once the required fields have been filled
-    const formCompleted = name && location && role && moment && caption && profilePhoto && momentPhoto;
+    const formCompleted = name && location && role && moment && profilePhoto;
 
     // sending click down to the hidden file input
     const handleLaunchGallery = (id) => {
@@ -216,6 +225,7 @@ export default () => {
                                         <input
                                             name="role"
                                             value={role}
+                                            maxLength={19}
                                             placeholder="Your function"
                                             onChange={(e) => setRole(e.target.value)}
                                             className={classes.textField}
@@ -241,12 +251,12 @@ export default () => {
                                         value={moment}
                                         placeholder="Describe your most interesting moment here..."
                                         rows={3}
-                                        maxLength={90}
+                                        maxLength={120}
                                         onChange={(e) => setMoment(e.target.value)}
                                         className={classes.textField}
                                     />
                                     <Box position="absolute" bottom={5} right={10}>
-                                        <Typography variant="caption">{90 - moment.length}</Typography>
+                                        <Typography variant="caption">{120 - moment.length}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -269,25 +279,27 @@ export default () => {
                             </Box>
                             <Box mt={8}>
                                 <Typography> Profile picture <span style={{ color: '#B11F24', fontWeight: 'bold' }}>*</span></Typography>
-                                <Box display="flex" alignItems="center" mt={2}>
-                                    <Box height={'100px'} minWidth={'50px'} width={'100px'} style={{ backgroundColor: '#DDDDDD' }}>
-                                        {profilePhoto && <img src={profilePhoto} alt="Me" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
-                                    </Box>
-                                    <Box ml={1}>
-                                        <Button
-                                            variant="contained"
-                                            onClick={() => handleLaunchGallery("profile-photo")}
-                                            style={{ backgroundColor: '#F49C00', color: '#ffffff' }}
-                                            startIcon={<CameraAltIcon />}
-                                        >
-                                            Choose
-                                    </Button>
-                                        <input type="file" id="profile-photo" hidden name="profile-photo" onChange={(e) => setProfilePhoto(URL.createObjectURL(e.target.files[0]))} />
+                                <Box display="flex" alignItems="flex-start" mt={2}>
+                                    <Box textAlign="center">
+                                        <Box mx="auto" height={'100px'} minWidth={'50px'} width={'100px'} style={{ backgroundColor: '#DDDDDD' }}>
+                                            {profilePhoto && <img src={profilePhoto} alt="Me" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+                                        </Box>
+                                        <Box mt={2}>
+                                            <Button
+                                                variant="contained"
+                                                onClick={() => handleLaunchGallery("profile-photo")}
+                                                style={{ backgroundColor: '#F49C00', color: '#ffffff' }}
+                                                startIcon={<CameraAltIcon />}
+                                            >
+                                                Choose
+                                        </Button>
+                                            <input type="file" id="profile-photo" hidden name="profile-photo" onChange={(e) => setProfilePhoto(URL.createObjectURL(e.target.files[0]))} />
+                                        </Box>
                                     </Box>
                                 </Box>
                             </Box>
                             <Box mt={8}>
-                                <Typography> A picture that best explains your most impactful moment <span style={{ color: '#B11F24', fontWeight: 'bold' }}>*</span></Typography>
+                                <Typography> A fun picture of something you would like to remember from 2020</Typography>
                                 <Box display="flex" alignItems="flex-start" mt={2}>
                                     <Box textAlign="center">
                                         <Box mx={"auto"} height={'100px'} minWidth={'50px'} width={'100px'} style={{ backgroundColor: '#DDDDDD' }}>
@@ -305,22 +317,25 @@ export default () => {
                                             <input type="file" id="moment-photo" hidden name="moment-photo" onChange={(e) => setMomentPhoto(URL.createObjectURL(e.target.files[0]))} />
                                         </Box>
                                     </Box>
-                                    <Box flex={1} ml={2}>
-                                        <Box position="relative">
-                                            <textarea
-                                                name="caption"
-                                                value={caption}
-                                                placeholder="Caption"
-                                                rows={3}
-                                                maxLength={68}
-                                                onChange={(e) => setCaption(e.target.value)}
-                                                className={classes.textField}
-                                            />
-                                            <Box position="absolute" bottom={5} right={10}>
-                                                <Typography variant="caption">{68 - caption.length}</Typography>
+                                    {momentPhoto &&
+                                        <Box flex={1} ml={2}>
+                                            <Box position="relative">
+                                                <textarea
+                                                    name="caption"
+                                                    value={caption}
+                                                    placeholder="Caption"
+                                                    rows={3}
+                                                    maxLength={68}
+                                                    disabled={!momentPhoto}
+                                                    onChange={(e) => setCaption(e.target.value)}
+                                                    className={classes.textField}
+                                                />
+                                                <Box position="absolute" bottom={5} right={10}>
+                                                    <Typography variant="caption">{70 - caption.length}</Typography>
+                                                </Box>
                                             </Box>
                                         </Box>
-                                    </Box>
+                                    }
                                 </Box>
                             </Box>
                             <Box mt={8} textAlign="center" width={1}>
@@ -345,7 +360,6 @@ function Result(props) {
 
     const classes = useStyles();
     const [hide, setHide] = React.useState(true);
-    // const [image, setImage] = React.useState(null);
     const {
         name,
         location,
@@ -355,7 +369,8 @@ function Result(props) {
         caption,
         profilePhoto,
         momentPhoto,
-    } = props.data;
+    } = props.data;    // const [image, setImage] = React.useState(null);
+
 
     // I'd like to keep this. Can't stress.
     // let name = "Oladosu Ayo",
@@ -412,76 +427,86 @@ function Result(props) {
                             height: '22.07407407407%',
                             position: "absolute",
                             left: "60.462962962%",
-                            top: "18.2222222%"
+                            top: "19.40740740740741%"
                         }} />
                     {/* </Box> */}
-                    <Box className={classes.font80} position="absolute" left="10.925925925%" top="20.8888889%" style={{
+                    <Box className={classes.font80} position="absolute" left="10.925925925%" top="22.07407407407407%" style={{
                         fontFamily: 'Give You Glory',
                         color: '#45130F',
                         width: '58.3333333%',
                     }}>
                         {name.split(' ')[0]}
                     </Box>
-                    <Box className={classes.font38} position="absolute" left="10.925925925%" top="29.1851852%" style={{
+                    <Box className={classes.font38} position="absolute" left="10.9259259%" top="31.481481%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '400',
                         color: '#45130F',
                         width: '58.3333333%',
                     }}>
-                        {role}
+                        {role} function
                     </Box>
-                    <Box className={classes.font40} position="absolute" left="10.925925925%" top="33.3333333%" style={{
+                    <Box className={classes.font40} position="absolute" style={{
                         fontFamily: 'Raleway',
+                        top: '34.5185185%',
+                        left: '10.9259255%',
                         fontWeight: '700',
                         color: '#B11F24',
                         width: '58.3333333%',
                     }}>
                         {location}
                     </Box>
-                    <Box className={classes.font32} position="absolute" left="5.55555556%" top="44.5925926%" style={{
+                    <Box className={classes.font32} position="absolute" left="5.55555%" top="45.18518%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
                         color: 'rgba(68,50,50,80)',
-                        width: '88.1481481%',
+                        width: '88.14814%',
                         height: '12.4444444%',
                     }}>
                         "{WOW}"
                     </Box>
-                    <img id="template"
-                        src={momentPhoto}
-                        alt="moment"
-                        style={{
-                            left: "5.55555556%",
-                            top: "56.8888888888888%",
-                            borderRadius: '8px',
-                            position: "absolute",
-                            objectFit: 'cover',
-                            width: '46.6666667%',
-                            height: '27.2592593%',
-                        }}
-                    />
-                    <Box className={classes.font30} position="absolute" left="5.55555556%" top="85.33333333333%" style={{
+                    {momentPhoto &&
+                        <>
+                            <img id="template"
+                                src={momentPhoto}
+                                alt="moment"
+                                style={{
+                                    left: "5.55555%",
+                                    top: "56.444444%",
+                                    borderRadius: '8px',
+                                    position: "absolute",
+                                    objectFit: 'cover',
+                                    width: '36.29629%',
+                                    height: '27.25925%',
+                                }}
+                            />
+
+
+                            <Box className={classes.font30} position="absolute" left="5.5555%" top="85.33333%" style={{
+                                fontFamily: 'Raleway',
+                                fontStyle: 'italic',
+                                fontWeight: '600',
+                                color: 'rgba(68,50,50,80)',
+                                width: '36.296296%',
+                                height: '8.888888%',
+                                textAlign: 'center'
+                            }}>
+                                {caption}
+                            </Box>
+                        </>
+                    }
+                    <Box className={classes.font36} position="absolute" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '600',
-                        color: 'rgba(68,50,50,80)',
-                        width: '46.6666667%',
-                        height: '5.92592593%',
-                        textAlign: 'center'
-                    }}>
-                        {caption}
-                    </Box>
-                    <Box className={classes.font36} position="absolute" left="55.9259259%" top="56.8888888888%" style={{
-                        fontFamily: 'Raleway',
-                        fontStyle: 'italic',
-                        fontWeight: '600',
+                        left: momentPhoto ? '45.18518%' : '5.1851851%',
+                        top: '56.4444%',
                         color: '#B11F24',
-                        width: '37.037037%',
-                        height: '14.8148148%',
+                        width: momentPhoto ? '50.555555%' : '88.888%',
+                        height: '24.888888%',
                     }}>
                         My most interesting / impactful moment in 2020 so far is {moment}
-                            </Box>
+                    </Box>
                 </Box>
             </Paper>
             <Box mt={5} textAlign="center" width={1}>
