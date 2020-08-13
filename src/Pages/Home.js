@@ -251,12 +251,12 @@ export default () => {
                                         value={moment}
                                         placeholder="Describe your most interesting moment here..."
                                         rows={3}
-                                        maxLength={150}
+                                        maxLength={90}
                                         onChange={(e) => setMoment(e.target.value)}
                                         className={classes.textField}
                                     />
                                     <Box position="absolute" bottom={5} right={10}>
-                                        <Typography variant="caption">{150 - moment.length}</Typography>
+                                        <Typography variant="caption">{90 - moment.length}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -455,16 +455,16 @@ function Result(props) {
                     }}>
                         {location}
                     </Box>
-                    <Box className={classes.font32} position="absolute" left="5.55555%" top="45.18518%" style={{
+                    <Box className={classes.font36} position="absolute" left="5.55555%" top="45.18518%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
-                        fontWeight: '600',
+                        fontWeight: '500',
                         color: 'rgba(68,50,50,80)',
                         width: '88.14814%',
                         height: '12.4444444%',
                     }}>
-                        <span style={{fontStyle:'normal'}}>Note to Self / Words of wisdom</span> <br/>
-                        "{WOW}"
+                        My most interesting / impactful moment in 2020 so far is {moment}
+
                     </Box>
                     {momentPhoto &&
                         <>
@@ -496,19 +496,22 @@ function Result(props) {
                             </Box>
                         </>
                     }
-                    <Box className={classes.font36} position="absolute" style={{
+                    <Box className={classes.font32} position="absolute" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         display: 'flex',
-                        alignItems: 'center',
-                        fontWeight: '600',
+                        // alignItems: 'center',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        fontWeight: '500',
                         left: momentPhoto ? '45.18518%' : '5.1851851%',
                         top: '56.4444%',
                         color: '#B11F24',
                         width: momentPhoto ? '50.555555%' : '88.888%',
                         height: '24.888888%',
                     }}>
-                        My most interesting / impactful moment in 2020 so far is {moment}
+                        <span style={{fontWeight: '700', marginBottom: '5px'}}>Note to Self</span>
+                        "{WOW}"
                     </Box>
                 </Box>
             </Paper>
