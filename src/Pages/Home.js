@@ -24,7 +24,7 @@ import htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 
 import {
-    Template,
+    Template2,
     My2020Moments,
 } from '../Assets';
 
@@ -225,10 +225,11 @@ export default () => {
                                         <input
                                             name="role"
                                             value={role}
-                                            maxLength={19}
+                                            maxLength={20}
                                             placeholder="Your function"
                                             onChange={(e) => setRole(e.target.value)}
                                             className={classes.textField}
+                                            required
                                         />
                                     </Grid>
                                     <Grid item xs={12} lg={6}>
@@ -239,6 +240,7 @@ export default () => {
                                             placeholder="Your Location"
                                             onChange={(e) => setLocation(e.target.value)}
                                             className={classes.textField}
+                                            required
                                         />
                                     </Grid>
                                 </Grid>
@@ -251,12 +253,13 @@ export default () => {
                                         value={moment}
                                         placeholder="Describe your most interesting moment here..."
                                         rows={3}
-                                        maxLength={90}
+                                        maxLength={150}
                                         onChange={(e) => setMoment(e.target.value)}
                                         className={classes.textField}
+                                        required
                                     />
                                     <Box position="absolute" bottom={5} right={10}>
-                                        <Typography variant="caption">{90 - moment.length}</Typography>
+                                        <Typography variant="caption">{150 - moment.length}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -268,12 +271,13 @@ export default () => {
                                         value={WOW}
                                         placeholder="Word of wisdom here..."
                                         rows={3}
-                                        maxLength={150}
+                                        maxLength={120}
                                         onChange={(e) => setWOW(e.target.value)}
                                         className={classes.textField}
+                                        required
                                     />
                                     <Box position="absolute" bottom={5} right={10}>
-                                        <Typography variant="caption">{150 - WOW.length}</Typography>
+                                        <Typography variant="caption">{120 - WOW.length}</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -325,13 +329,13 @@ export default () => {
                                                     value={caption}
                                                     placeholder="Caption"
                                                     rows={3}
-                                                    maxLength={68}
+                                                    maxLength={55}
                                                     disabled={!momentPhoto}
                                                     onChange={(e) => setCaption(e.target.value)}
                                                     className={classes.textField}
                                                 />
                                                 <Box position="absolute" bottom={5} right={10}>
-                                                    <Typography variant="caption">{70 - caption.length}</Typography>
+                                                    <Typography variant="caption">{55 - caption.length}</Typography>
                                                 </Box>
                                             </Box>
                                         </Box>
@@ -415,7 +419,9 @@ function Result(props) {
                 visibility: hide ? 'hidden' : 'visible'
             }}>
                 <Box position="relative">
-                    <img id="template" src={Template} alt="template" style={{ width: "100%", height: "auto" }} />
+                    {/* <img id="template" src={Template2} alt="template" style={{ width: "100%", height: "auto" }} /> */}
+                    <Template2 style={{ width: "100%", height: "auto" }} />
+
                     <img
                         id="template"
                         src={profilePhoto}
@@ -424,20 +430,20 @@ function Result(props) {
                             objectFit: 'cover',
                             borderRadius: '900px',
                             width: '27.4074074%',
-                            height: '22.07407407407%',
+                            height: '20.555556%',
                             position: "absolute",
                             left: "60.462962962%",
-                            top: "19.40740740740741%"
+                            top: "17.0833333%"
                         }} />
                     {/* </Box> */}
-                    <Box className={classes.font80} position="absolute" left="10.925925925%" top="22.07407407407407%" style={{
+                    <Box className={classes.font80} position="absolute" left="10.925925925%" top="19.583333%" style={{
                         fontFamily: 'Give You Glory',
                         color: '#45130F',
                         width: '58.3333333%',
                     }}>
                         {name.split(' ')[0]}
                     </Box>
-                    <Box className={classes.font38} position="absolute" left="10.9259259%" top="31.481481%" style={{
+                    <Box className={classes.font38} position="absolute" left="10.9259259%" top="28.8027777%" style={{
                         fontFamily: 'Raleway',
                         fontWeight: '400',
                         color: '#45130F',
@@ -447,7 +453,7 @@ function Result(props) {
                     </Box>
                     <Box className={classes.font40} position="absolute" style={{
                         fontFamily: 'Raleway',
-                        top: '34.5185185%',
+                        top: '32.25%',
                         left: '10.9259255%',
                         fontWeight: '700',
                         color: '#B11F24',
@@ -455,7 +461,7 @@ function Result(props) {
                     }}>
                         {location}
                     </Box>
-                    <Box className={classes.font36} position="absolute" left="5.55555%" top="45.18518%" style={{
+                    <Box className={classes.font36} position="absolute" left="5.55555%" top="40.694444%" style={{
                         fontFamily: 'Raleway',
                         fontStyle: 'italic',
                         fontWeight: '500',
@@ -473,23 +479,23 @@ function Result(props) {
                                 alt="moment"
                                 style={{
                                     left: "5.55555%",
-                                    top: "56.444444%",
+                                    top: "59.583333%",
                                     borderRadius: '8px',
                                     position: "absolute",
                                     objectFit: 'cover',
-                                    width: '36.29629%',
-                                    height: '27.25925%',
+                                    width: '33.148148%',
+                                    height: '25.555556%',
                                 }}
                             />
 
 
-                            <Box className={classes.font30} position="absolute" left="5.5555%" top="85.33333%" style={{
+                            <Box className={classes.font30} position="absolute" left="5.5555%" top="86.25%" style={{
                                 fontFamily: 'Raleway',
                                 fontStyle: 'italic',
                                 fontWeight: '600',
                                 color: 'rgba(68,50,50,80)',
                                 width: '36.296296%',
-                                height: '8.888888%',
+                                height: '4.861111%',
                                 textAlign: 'center'
                             }}>
                                 {caption}
@@ -505,12 +511,12 @@ function Result(props) {
                         flexDirection: 'column',
                         fontWeight: '500',
                         left: momentPhoto ? '45.18518%' : '5.1851851%',
-                        top: '56.4444%',
+                        top: '59.583333%',
                         color: '#B11F24',
                         width: momentPhoto ? '50.555555%' : '88.888%',
-                        height: '24.888888%',
+                        height: '25.555556%',
                     }}>
-                        <span style={{fontWeight: '700', marginBottom: '5px'}}>Note to Self</span>
+                        <span className={classes.font36} style={{fontWeight: '700', marginBottom: '5px'}}>Note to Self</span>
                         "{WOW}"
                     </Box>
                 </Box>

@@ -11,3 +11,4 @@ export { Logo, AbInBev, Template, MomentTemplate, ProfilePictureTemplate, Output
 
 export { ReactComponent as Border } from './border.svg';
 export { ReactComponent as My2020Moments } from './my-2020-moments.svg';
+export { ReactComponent as Template2 } from './template.svg';
